@@ -1,8 +1,9 @@
-from config import get_arguments
-from SinGAN.manipulate import *
-from SinGAN.training import *
-import SinGAN.functions as functions
+import os
 
+import SinGAN.functions as functions
+from config import get_arguments
+from SinGAN.manipulate import SinGAN_generate
+from SinGAN.training import train
 
 if __name__ == '__main__':
     parser = get_arguments()
