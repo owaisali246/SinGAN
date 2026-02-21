@@ -172,10 +172,11 @@ def train_single_scale(netD,netG,reals,Gs,Zs,in_s,NoiseAmp,opt,centers=None):
 
         for j in range(opt.Gsteps):
             netG.zero_grad()
+            # Recompute fake each step so graph/parameter versions stay aligned in modern PyTorch.
+            fake = netG(noise.detach(), prev)
             output = netD(fake)
             #D_fake_map = output.detach()
             errG = -output.mean()
-            errG.backward(retain_graph=True)
             if alpha!=0:
                 loss = nn.MSELoss()
                 if opt.mode == 'paint_train':
@@ -183,14 +184,14 @@ def train_single_scale(netD,netG,reals,Gs,Zs,in_s,NoiseAmp,opt,centers=None):
                     plt.imsave('%s/z_prev.png' % (opt.outf), functions.convert_image_np(z_prev), vmin=0, vmax=1)
                 Z_opt = opt.noise_amp*z_opt+z_prev
                 rec_loss = alpha*loss(netG(Z_opt.detach(),z_prev),real)
-                rec_loss.backward(retain_graph=True)
-                rec_loss = rec_loss.detach()
             else:
                 Z_opt = z_opt
-                rec_loss = 0
+                rec_loss = torch.tensor(0.0, device=opt.device)
 
+            (errG + rec_loss).backward()
             optimizerG.step()
 
+        rec_loss = rec_loss.detach()
         errG2plot.append(errG.detach()+rec_loss)
         D_real2plot.append(D_x)
         D_fake2plot.append(D_G_z)
