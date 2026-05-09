@@ -111,9 +111,8 @@ def SinGAN_generate(Gs,Zs,reals,NoiseAmp,opt,in_s=None,scale_v=1,scale_h=1,n=0,g
 
             if images_prev == []:
                 I_prev = m(in_s)
-                #I_prev = m(I_prev)
-                #I_prev = I_prev[:,:,0:z_curr.shape[2],0:z_curr.shape[3]]
-                #I_prev = functions.upsampling(I_prev,z_curr.shape[2],z_curr.shape[3])
+                I_prev = I_prev[:,:,0:z_curr.shape[2],0:z_curr.shape[3]]
+                I_prev = functions.upsampling(I_prev,z_curr.shape[2],z_curr.shape[3])
             else:
                 I_prev = images_prev[i]
                 I_prev = imresize(I_prev,1/opt.scale_factor, opt)

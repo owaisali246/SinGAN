@@ -1,8 +1,8 @@
+import SinGAN.functions as functions
 from config import get_arguments
+from SinGAN.imresize import imresize
 from SinGAN.manipulate import *
 from SinGAN.training import *
-from SinGAN.imresize import imresize
-import SinGAN.functions as functions
 
 
 if __name__ == '__main__':

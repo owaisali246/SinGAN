@@ -169,7 +169,8 @@ def np2torch(x, opt):
         x = x[:, :, :, None]
         x = x.transpose((3, 2, 0, 1)) / 255
     else:
-        x = color.rgb2gray(x)
+        if x.ndim == 3:
+            x = color.rgb2gray(x)
         x = x[:, :, None, None]
         x = x.transpose(3, 2, 0, 1)
     x = torch.from_numpy(x)
@@ -437,7 +438,7 @@ def dilate_mask(mask, opt):
         element = morphology.disk(radius=20)
     mask = torch2uint8(mask)
     mask = mask[:, :, 0]
-    mask = morphology.binary_dilation(mask, selem=element)
+    mask = morphology.binary_dilation(mask, footprint=element)
     mask = filters.gaussian(mask, sigma=5)
     nc_im = opt.nc_im
     opt.nc_im = 1
