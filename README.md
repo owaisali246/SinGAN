@@ -1,8 +1,7 @@
 # SinGAN
 
-[Project](https://tamarott.github.io/SinGAN.htm) | [Arxiv](https://arxiv.org/pdf/1905.01164.pdf) | [CVF](http://openaccess.thecvf.com/content_ICCV_2019/papers/Shaham_SinGAN_Learning_a_Generative_Model_From_a_Single_Natural_Image_ICCV_2019_paper.pdf) | [Supplementary](https://openaccess.thecvf.com/content_ICCV_2019/supplemental/Shaham_SinGAN_Learning_a_ICCV_2019_supplemental.pdf) | [Talk (ICCV'19)](https://youtu.be/mdAcPe74tZI?t=3191)
+**SinGAN: Learning a Generative Model from a Single Natural Image**
 
-*SinGAN: Learning a Generative Model from a Single Natural Image*
 **ICCV 2019 Best Paper Award (Marr Prize)**
 
 ---
@@ -27,7 +26,8 @@
 8. [Output File Structure](#output-file-structure)
 9. [SIFID Benchmark](#sifid-benchmark)
 10. [Practical Tips](#practical-tips)
-11. [Citation](#citation)
+11. [Credits](#credits)
+12. [Citation](#citation)
 
 ---
 
@@ -507,7 +507,27 @@ SinGAN requires the training image to be larger than `--min_size` (default 25px)
 
 ---
 
+## Credits
+
+This repository is a fork of the **official SinGAN implementation**, created by the original authors at the Technion — Israel Institute of Technology:
+
+- **Tamar Rott Shaham** — Technion
+- **Tali Dekel** — Google Research
+- **Tomer Michaeli** — Technion
+
+
+| Resource | Link |
+|---|---|
+| Project page | https://tamarott.github.io/SinGAN.htm |
+| Paper (arXiv) | https://arxiv.org/pdf/1905.01164.pdf |
+| CVF proceedings | http://openaccess.thecvf.com/content_ICCV_2019/papers/Shaham_SinGAN_Learning_a_Generative_Model_From_a_Single_Natural_Image_ICCV_2019_paper.pdf |
+| Original repository | https://github.com/tamarott/SinGAN |
+
+---
+
 ## Citation
+
+If you use this work in your research, please cite the original authors:
 
 ```bibtex
 @inproceedings{rottshaham2019singan,
